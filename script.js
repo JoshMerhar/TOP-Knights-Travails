@@ -4,8 +4,8 @@ function knightMoves(startSquare, targetSquare) {
     board.addPossibleMoves();
     const movesList = board.AdjList;
 
-    startSquare = JSON.stringify(startSquare);
-    targetSquare = JSON.stringify(targetSquare);
+    startSquare = `[${startSquare[0]},${startSquare[1]}]`;
+    targetSquare = `[${targetSquare[0]},${targetSquare[1]}]`;
     if (startSquare === targetSquare) {
         return console.log('You\'re already on that space!');
     }
@@ -79,12 +79,12 @@ class Graph{
             );
             possibleMoves.forEach((move) => {
                 if (move[0] >= 0 && move[0] <= 7 && move[1] >= 0 && move[1] <= 7) {
-                    allowedMoves.push(JSON.stringify(move));
+                    allowedMoves.push(`[${move[0]},${move[1]}]`);
                 }
             });
-            this.AdjList.set(JSON.stringify(square), allowedMoves);
+            this.AdjList.set(`[${square[0]},${square[1]}]`, allowedMoves);
         })
     }
 }
 
-knightMoves([0, 0], [7, 7]);
+knightMoves([0,0], [7,7]);
